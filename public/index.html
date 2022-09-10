@@ -1,43 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
+    <title>Simple Music Player</title>
+    <!-- Load FontAwesome icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <!-- Load the custom CSS style file -->
+    <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <div class="player">
+      <!-- Define the section for displaying details -->
+      <div class="details">
+        <div class="now-playing">PLAYING x OF y</div>
+        <div class="track-art"></div>
+        <div class="track-name">Track Name</div>
+        <div class="track-artist">Track Artist</div>
+      </div>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+      <!-- Define the section for displaying track buttons -->
+      <div class="buttons">
+        <div class="prev-track" onclick="prevTrack()">
+          <i class="fa fa-step-backward fa-2x"></i>
+        </div>
+        <div class="playpause-track" onclick="playpauseTrack()">
+          <i class="fa fa-play-circle fa-5x"></i>
+        </div>
+        <div class="next-track" onclick="nextTrack()">
+          <i class="fa fa-step-forward fa-2x"></i>
+        </div>
+      </div>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+      <!-- Define the section for displaying the seek slider-->
+      <div class="slider_container">
+        <div class="current-time">00:00</div>
+        <input
+          type="range"
+          min="1"
+          max="100"
+          value="0"
+          class="seek_slider"
+          onchange="seekTo()"
+        />
+        <div class="total-duration">00:00</div>
+      </div>
+
+      <!-- Define the section for displaying the volume slider-->
+      <div class="slider_container">
+        <i class="fa fa-volume-down"></i>
+        <input
+          type="range"
+          min="1"
+          max="100"
+          value="99"
+          class="volume_slider"
+          onchange="setVolume()"
+        />
+        <i class="fa fa-volume-up"></i>
+      </div>
+    </div>
+
+    <!-- Load the main script for the player -->
+    <script src="/socket.io/socket.io.js"></script>
+
+    <!-- //Use relative path not absolute path -->
+    <script src="public\main.js">
+
+      // Select all the elements in the HTML page
+      // and assign them to a variable
+    </script>
   </body>
 </html>
